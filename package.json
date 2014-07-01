@@ -17,6 +17,7 @@
         "mongodb": "*",
         "mongoose": "*",
         "express-mongoose": "*",
+        "coffee-script": "*",
         "less": "*"
     }
 }
