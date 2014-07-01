@@ -1,0 +1,18 @@
+本系统全部使用开源技术，可以在Windows、OS X、Linux全平台通用。
+服务器环境：nodejs 0.10.29
+服务器语言：CoffeeScript
+MVC框架：Express 4
+数据库：MongoDB
+ORM框架：mongoose
+模板引擎：ejs
+单元测试框架：Mocha
+前端页面语言：HTML5
+层叠样式表：CSS3、LESS
+页面脚本语言：Javascript、CoffeeScript
+页面开源框架：JQuary、Bootstrap
+版本控制软件：Git
+版本控制服务：Github
+数据库托管平台：Mongohq
+IDE：JetBrain Webstorm
+编辑器：Sublime Text 3
+Google查资料用代理工具：Goagent
