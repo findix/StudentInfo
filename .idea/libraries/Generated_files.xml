@@ -3,22 +3,28 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/model/Grade.js" />
-        <item url="file://$PROJECT_DIR$/routes/users.js" />
+        <item url="file://$PROJECT_DIR$/routes/login.js" />
         <item url="file://$PROJECT_DIR$/model/Course.js" />
+        <item url="file://$PROJECT_DIR$/model/User.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
         <item url="file://$PROJECT_DIR$/app.js" />
-        <item url="file://$PROJECT_DIR$/config/database.js" />
+        <item url="file://$PROJECT_DIR$/test/userTest.js" />
         <item url="file://$PROJECT_DIR$/model/Student.js" />
+        <item url="file://$PROJECT_DIR$/config/database.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/public/javascripts/test.js" />
+      <root url="file://$PROJECT_DIR$/public/javascripts/test.js" />
       <root url="file://$PROJECT_DIR$/model/Grade.js" />
-      <root url="file://$PROJECT_DIR$/routes/users.js" />
+      <root url="file://$PROJECT_DIR$/routes/login.js" />
       <root url="file://$PROJECT_DIR$/model/Course.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/model/User.js" />
       <root url="file://$PROJECT_DIR$/app.js" />
-      <root url="file://$PROJECT_DIR$/model/Student.js" />
+      <root url="file://$PROJECT_DIR$/test/userTest.js" />
       <root url="file://$PROJECT_DIR$/config/database.js" />
+      <root url="file://$PROJECT_DIR$/model/Student.js" />
     </CLASSES>
     <SOURCES />
   </library>

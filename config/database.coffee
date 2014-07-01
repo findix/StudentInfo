@@ -1,5 +1,6 @@
 mongoose = require 'mongoose'
-mongoDatabaseURI = 'mongodb://admin:admin@kahana.mongohq.com:10003/studentinfo'
+#mongoDatabaseURI = 'mongodb://admin:admin@kahana.mongohq.com:10003/studentinfo'
+mongoDatabaseURI = 'mongodb://localhost:27017/studentinfo'
 
 mongoose.connect mongoDatabaseURI
 
