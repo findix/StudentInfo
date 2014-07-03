@@ -1,3 +1,51 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <title>学生信息管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body style="background: url('/images/404.png') no-repeat center center fixed;">
+<div id="wrap">
+    <div id="main" class="clearfix">
+        <div class="container">
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <h3 class="panel-title text-center"">
+                                ↓ <%= error.status %> <%= message %> ↓
+                            </h3>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <pre><%= error.stack %></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
+        </div>
+    </div>
+</div>
+<!-- 页脚版权信息 -->
+<% include public/footer %>
+
+<!-- js脚本 -->
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/coffee-script.js"></script>
+<script src="/javascripts/login.js"></script>
+</body>
+
+</html>
