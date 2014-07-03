@@ -7,7 +7,6 @@
   router = express.Router();
 
   router.get("/", function(req, res) {
-    console.log('session');
     if (req.session.username != null) {
       return res.render('index', {
         username: req.session.username
@@ -19,17 +18,8 @@
     }
   });
 
-  router.use("/index", function(req, res) {
-    if (req.session.username == null) {
-      res.redirect('/');
-    }
-    return res.render('index', {
-      username: req.session.username
-    });
-  });
-
   module.exports = router;
 
 }).call(this);
 
-//# sourceMappingURL=index.map
+//# sourceMappingURL=test.map

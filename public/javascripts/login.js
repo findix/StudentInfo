@@ -78,7 +78,7 @@ function checkForm() {
     //密码password验证
     if (form.password != undefined && !password.test(form.password.value)) {
         //不符合匹配规则
-        onClick($(form.password)[0], '密码不规范，应为6~16位字母和数字');
+        onClick($(form.password)[0], '新的密码不规范，应为6~16位字母和数字');
         //阻止页面跳转
         return false;
     }

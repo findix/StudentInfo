@@ -1,0 +1,75 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+    <title>学生信息管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+<div id="wrap">
+    <div id="main" class="clearfix">
+        <% include public/nav %>
+        <div class="container" style="margin-top: 100px">
+            <div class="container" style="max-width: 300px;">
+                <%- status %>
+                <div class="panel panel-narmol">
+                    <div class="panel-heading">修改密码</div>
+                    <div class="panel-body">
+                        <form action="/user/Changepasswd" method="post" class="form-signup">
+                            <input id="password" name="oldPassword" type="password"
+                                   class="form-control" placeholder="原密码" autofocus
+                                   onkeydown="if(event.keyCode==13){checkChangePasswd();}"/><br/>
+                            <input id="newPassword" name="password" type="password"
+                                   class="form-control" placeholder="新的密码"
+                                   onkeydown="if(event.keyCode==13){checkChangePasswd();}"/><br/>
+                            <input id="reNewPassword" type="password" class="form-control"
+                                   placeholder="请再输一遍您的新密码"
+                                   onkeydown="if(event.keyCode==13){checkChangePasswd();}"/><br/>
+                            <input class="btn btn-lg btn-info btn-block" type="button"
+                                   onclick="checkChangePasswd()" value="修改密码"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function checkChangePasswd() {
+                var password = $('#password').val();
+                var newPassword = $('#newPassword').val();
+                var reNewPassword = $('#reNewPassword').val();
+                var passwordRegex = new RegExp(/\w{6,16}/);//字母6到16次，用于密码匹配
+                if (password == "" || newPassword == ""
+                        || reNewPassword == ""
+                        ) {
+                    alert("密码不能为空");
+                } else if (!passwordRegex.test(password)
+                        || !passwordRegex.test(newPassword)
+                        || !passwordRegex.test(reNewPassword)) {
+                    alert("密码不规范，应为6~16位字母和数字");
+                } else if (newPassword != reNewPassword) {
+                    alert("您两次输入的密码不一致，请重新输入。");
+                    newPassword = "";
+                    reNewPassword = "";
+                }
+                else {
+                    document.forms[0].submit();
+                }
+            }
+        </script>
+    </div>
+</div>
+<!-- 页脚版权信息 -->
+<% include public/footer %>
+
+<!-- js脚本 -->
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/coffee-script.js"></script>
+</body>
+</html>

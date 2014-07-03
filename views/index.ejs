@@ -8,74 +8,23 @@
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
 
-    <!--<link rel="stylesheet" href="stylesheets/bootstrap.min.css">-->
-    <link rel="stylesheet" href="stylesheets/main.css">
-    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
 <div id="wrap">
     <div id="main" class="clearfix">
-        <!-- 背景云层 -->
-        <div id="header">
-            <div id="clouds">
-                <div class="cloud-1" data-speed="35000"></div>
-                <div class="cloud-2" data-speed="45000" data-delay="15000"></div>
-                <div class="cloud-3" data-speed="40000"></div>
-                <div class="cloud-4" data-speed="38000" data-delay="20000"></div>
-            </div>
-        </div>
-        <!-- / #header -->
-
-        <div id="content">
-            <div class="container">
-                <!-- 登录模块 -->
-                <form id="login" method="post" action="login" onsubmit="return checkForm(this);">
-                    <div id="login_header"><i class="icon-home"></i>学生信息管理系统</div>
-
-                    <div id="login_content">
-                    <span>
-                        <input class="tip" name="username" type="text" maxlength="18" onclick="onClick(this);"
-                               onblur="onBlur(this);">
-                        <label for="username">用户名</label>
-                        <i class="icon-user"></i>
-                        <div class="tooltip" data-text="填写您的工号">填写您的工号</div>
-                    </span>
-                    <span>
-                        <input class="tip" name="password" type="password" maxlength="16" onclick="onClick(this);"
-                               onblur="onBlur(this);">
-                        <label for="password">密码</label>
-                        <i class="icon-lock"></i>
-                        <div class="tooltip" data-text="填写您的密码">填写您的密码</div>
-                    </span>
-
-                        <div class="option">
-                            <%- status %>
-                        </div>
-                    </div>
-                    <!-- / #login_content -->
-
-                    <div id="login_footer">
-                        <div class="ing"></div>
-                        <button id="login_btn" type="submit">登录</button>
-                    </div>
-                    <!-- / #login_footer -->
-
-                </form>
-
-            </div>
-            <!-- / .container -->
-        </div>
-        <!-- / #content-->
+        <% include public/nav %>
     </div>
 </div>
 <!-- 页脚版权信息 -->
-<% include footer %>
+<% include public/footer %>
 
 <!-- js脚本 -->
-<script src="javascripts/jquery-1.11.1.min.js"></script>
-<script src="javascripts/bootstrap.min.js"></script>
-<script src="javascripts/coffee-script.js"></script>
-<script src="javascripts/login.js"></script>
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/coffee-script.js"></script>
+<script src="/javascripts/login.js"></script>
 </body>
 
 </html>

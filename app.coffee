@@ -6,8 +6,9 @@ cookieParser = require("cookie-parser")
 bodyParser = require("body-parser")
 session = require("express-session")
 db = require("./config/database")
-routes = require("./routes/index")
-login = require("./routes/login")
+indexRoute = require("./routes/index")
+userRoute = require("./routes/user")
+testRoute = require "./routes/test"
 app = express()
 
 # view engine setup
@@ -20,15 +21,15 @@ app.use bodyParser.json()
 app.use bodyParser.urlencoded(extended: true)
 app.use cookieParser()
 app.use(session(
-    secret: 'keyboard cat'
-    key: 'sid'
-    cookie:
-        secure: true
+    secret: '1234567890QWERTY'
+    resave: 'true'
+    saveUninitialized: "true"
 ))
 app.use require("less-middleware")(path.join(__dirname, "public"))
 app.use express.static(path.join(__dirname, "public"))
-app.use "/", routes
-app.use "/login", login
+app.use "/", indexRoute
+app.use "/user", userRoute
+app.use "/test", testRoute
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->
