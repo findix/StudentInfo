@@ -21,4 +21,4 @@
 
 }).call(this);
 
-//# sourceMappingURL=Student.map
+//# sourceMappingURL=student.map
