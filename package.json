@@ -16,7 +16,6 @@
     "less-middleware": "1.0.x",
     "mongodb": "*",
     "mongoose": "*",
-    "express-mongoose": "*",
     "coffee-script": "*",
     "less": "*",
     "express-session": "^1.6.1",

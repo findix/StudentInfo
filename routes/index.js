@@ -7,7 +7,6 @@
   router = express.Router();
 
   router.get("/", function(req, res) {
-    console.log('session');
     if (req.session.username != null) {
       return res.render('index', {
         username: req.session.username

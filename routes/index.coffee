@@ -3,7 +3,6 @@ router = express.Router()
 
 # GET home page. 
 router.get "/", (req, res) ->
-    console.log 'session' #{req.session.}
     if req.session.username?
         res.render 'index',
             username: req.session.username

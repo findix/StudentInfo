@@ -20,12 +20,6 @@
     return console.log('Mongoose default connection disconnected');
   });
 
-  require('../model/Student');
-
-  require('../model/Course');
-
-  require('../model/Grade');
-
 }).call(this);
 
 //# sourceMappingURL=database.map

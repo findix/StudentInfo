@@ -1,13 +1,19 @@
 mongoose = require 'mongoose'
 
 _Student = new mongoose.Schema
-    _id: mongoose.Schema.Types.ObjectId
-    sno: String
-    sname: String
+    sno:
+        type: String
+        required: true
+    sname:
+        type: String
+        required: true
     birthday:
         type: Date
         default: Date.now
-    gender: String
+    gender:
+        type: String
+        required: true
+        enum:['男','女']
     class: String
     department: String
 

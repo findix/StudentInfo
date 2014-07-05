@@ -1,0 +1,158 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <title>学生信息管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+<div id="wrap">
+    <div id="main" class="clearfix">
+        <% include public/nav %>
+
+        <div class="container">
+            <!--搜索-->
+            <form action="/student" method="get" class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="search" class="form-control" name="query" placeholder="Search"
+                           value="<%= (query == undefined ? '' : query) %>">
+                </div>
+                <button type="submit" class="btn btn-default">查询</button>
+            </form>
+            <!--表格-->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>班级</th>
+                        <th>院系</th>
+                        <th>生日</th>
+                        <th>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#addModal" onclick="add()">
+                                添加学生
+                            </button>
+                        </th>
+                    </tr>
+                    <% if(students != undefined){
+                            students.forEach(function(student){ %>
+                    <tr id="<%= student._id %>">
+                        <td><%= student.sno %></td>
+                        <td><%= student.sname %></td>
+                        <td><%= student.gender %></td>
+                        <td><%= student.class %></td>
+                        <td><%= student.department %></td>
+
+                        <td><%= student.birthday.getFullYear() + '-' +
+                            (student.birthday.getMonth()+1 < 10 ? '0' + (student.birthday.getMonth()+1) : (student.birthday.getMonth()+1)) + '-' +
+                            (student.birthday.getDate() < 10 ? '0' + student.birthday.getDate() : student.birthday.getDate())
+                            %></td>
+                        <td>
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#addModal"
+                                    onclick="update('<%= student._id %>')">修改
+                            </button>
+                            <a href="/student/delete/<%= student._id %>" class="btn btn-danger">删除</a>
+                            <a href="#" class="btn btn-primary">查看成绩</a></td>
+                    </tr>
+                    <% });} %>
+                </table>
+            </div>
+            <!--模态框-->
+            <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span
+                                        aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                            <h4 class="modal-title" id="modal-title">添加学生信息</h4>
+                        </div>
+                        <form class="form-horizontal" id="form" method="post" action="/student">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="sno" class="col-sm-2 control-label">学号</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="sno" name="sno" placeholder="学号">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sname" class="col-sm-2 control-label">姓名</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="sname" name="sname" placeholder="姓名">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender" class="col-sm-2 control-label">姓名</label>
+
+                                    <div class="col-sm-10">
+                                        <div class="radio">
+                                            <label radio-inline>
+                                                <input type="radio" name="gender" id="gender"
+                                                       value="男" checked>
+                                                男
+                                            </label>
+                                            <label radio-inline>
+                                                <input type="radio" name="gender" id="gender"
+                                                       value="女">
+                                                女
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="class" class="col-sm-2 control-label">班级</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="class" name="class" placeholder="班级">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="department" class="col-sm-2 control-label">院系</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="department" name="department" placeholder="院系">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="birthday" class="col-sm-2 control-label">生日</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="date" class="form-control" id="birthday" name="birthday" placeholder="生日">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <input class="btn btn-primary" type="submit" value="确认"/>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+        </div>
+    </div>
+</div>
+<!-- 页脚版权信息 -->
+<% include public/footer %>
+
+<!-- js脚本 -->
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/coffee-script.js"></script>
+<script src="/javascripts/student.js"></script>
+</body>
+
+</html>
+

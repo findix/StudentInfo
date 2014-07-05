@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "studentTest.js",
+  "sourceRoot": "",
+  "sources": [
+    "studentTest.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,0BAAA;;AAAA,EAAA,EAAA,GAAK,OAAA,CAAQ,oBAAR,CAAL,CAAA;;AAAA,EACA,QAAA,GAAW,OAAA,CAAQ,UAAR,CADX,CAAA;;AAAA,EAGA,YAAA,GAAe,OAAA,CAAQ,kBAAR,CAHf,CAAA;AAAA"
+}

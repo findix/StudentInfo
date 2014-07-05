@@ -5,14 +5,15 @@
   mongoose = require('mongoose');
 
   _Grade = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     student: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Student'
+      ref: 'Student',
+      required: true
     },
     Course: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course'
+      ref: 'Course',
+      required: true
     },
     score: {
       type: Number,

@@ -9,6 +9,7 @@ db = require("./config/database")
 indexRoute = require("./routes/index")
 userRoute = require("./routes/user")
 testRoute = require "./routes/test"
+studentRoute = require "./routes/student"
 app = express()
 
 # view engine setup
@@ -30,6 +31,7 @@ app.use express.static(path.join(__dirname, "public"))
 app.use "/", indexRoute
 app.use "/user", userRoute
 app.use "/test", testRoute
+app.use "/student", studentRoute
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->
