@@ -1,7 +1,8 @@
 express = require "express"
+mongoose = require 'mongoose'
 router = express.Router()
 
-studentModel = require "../model/Student"
+studentModel = mongoose.model('Student')
 
 # GET home page.
 router.get "/", (req, res) ->
