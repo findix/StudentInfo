@@ -6,7 +6,7 @@
 
   mongoose = require('mongoose');
 
-  courseModel = require("../model/Course");
+  courseModel = mongoose.model('Course');
 
   for (i = _i = 200002; _i <= 200010; i = ++_i) {
     courseEntity = new courseModel({
@@ -15,7 +15,11 @@
       credit: 6,
       teacher: 'Steve Jobs'
     });
-    courseEntity.save();
+    courseEntity.save(function(err) {
+      if (err != null) {
+        return console.log(err);
+      }
+    });
   }
 
 }).call(this);

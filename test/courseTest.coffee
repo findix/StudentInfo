@@ -1,7 +1,7 @@
 db = require('../config/database');
 mongoose = require 'mongoose'
 
-courseModel = require "../model/Course"
+courseModel = mongoose.model('Course')
 
 for i in [200002..200010]
     courseEntity = new courseModel(
@@ -10,5 +10,7 @@ for i in [200002..200010]
         credit: 6
         teacher: 'Steve Jobs'
     )
-    courseEntity.save()
+    courseEntity.save (err)->
+        if err?
+            console.log(err)
 
