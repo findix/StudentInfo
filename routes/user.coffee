@@ -1,7 +1,8 @@
 express = require("express")
+mongoose = require 'mongoose'
 router = express.Router()
 
-user = require "../model/User"
+user = mongoose.model('User')
 
 # GET login listing.
 router.post '/Login', (req, res) ->

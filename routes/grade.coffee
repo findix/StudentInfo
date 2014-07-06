@@ -1,8 +1,9 @@
 express = require "express"
+mongoose = require 'mongoose'
 router = express.Router()
 
-gradeModel = require "../model/Grade"
-courseModel = require "../model/course"
+gradeModel = mongoose.model('Grade')
+courseModel = mongoose.model('Course')
 
 router.get "/", (req, res)->
     unless req.session.username?
