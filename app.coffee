@@ -11,6 +11,7 @@ userRoute = require("./routes/user")
 testRoute = require "./routes/test"
 studentRoute = require "./routes/student"
 gradeRoute=require "./routes/grade"
+courseRoute=require "./routes/course"
 app = express()
 
 # view engine setup
@@ -34,6 +35,7 @@ app.use "/user", userRoute
 app.use "/test", testRoute
 app.use "/student", studentRoute
 app.use "/grade", gradeRoute
+app.use "/course", courseRoute
 
 #/ catch 404 and forward to error handler
 app.use (req, res, next) ->

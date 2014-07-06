@@ -1,0 +1,64 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <title>学生信息管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+</head>
+<body>
+<div id="wrap">
+    <div id="main" class="clearfix">
+        <% include public/nav %>
+
+        <div class="container">
+            <!--搜索-->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <tr>
+                        <th>课号</th>
+                        <th>课程名</th>
+                        <th>学分</th>
+                        <th>教师</th>
+                        <th>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#addModal" onclick="add()">
+                                添加课程
+                            </button>
+                        </th>
+                    </tr>
+                    <% if(courses != undefined){
+                            courses.forEach(function(course){ %>
+                    <tr id="<%= course._id %>">
+                        <td><%= course.cno %></td>
+                        <td><%= course.cname %></td>
+                        <td><%= course.credit %></td>
+                        <td><%= course.teacher %></td>
+                        <td>
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#addModal"
+                                    onclick="update('<%= course._id %>')">修改
+                            </button>
+                            <a href="/course/delete/<%= course._id %>" class="btn btn-danger">删除</a>
+                    </tr>
+                    <% });} %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 页脚版权信息 -->
+<% include public/footer %>
+
+<!-- js脚本 -->
+<script src="/javascripts/jquery-1.11.1.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/coffee-script.js"></script>
+<script src="/javascripts/student.js"></script>
+</body>
+
+</html>
+
