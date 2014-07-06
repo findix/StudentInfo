@@ -91,8 +91,8 @@ router.post "/update/:gid", (req, res) ->
     res.redirect "/grade/#{_sid}"
 
 router.get "/average/:cid", (req, res)->
-#    unless req.session.username?
-#        res.redirect '/'
+    unless req.session.username?
+        res.redirect '/'
     cid = req.params.cid
     gradeModel.find(course: cid,(err, data) ->
             sum = 0

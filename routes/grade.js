@@ -126,6 +126,9 @@
 
   router.get("/average/:cid", function(req, res) {
     var cid;
+    if (req.session.username == null) {
+      res.redirect('/');
+    }
     cid = req.params.cid;
     return gradeModel.find({
       course: cid
