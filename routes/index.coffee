@@ -4,8 +4,9 @@ router = express.Router()
 # GET home page. 
 router.get "/", (req, res) ->
     if req.session.username?
-        res.render 'index',
-            username: req.session.username
+#        res.render 'index',
+#            username: req.session.username
+        res.redirect '/student'
     else res.render "login",
         status: ''
 

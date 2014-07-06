@@ -8,9 +8,7 @@
 
   router.get("/", function(req, res) {
     if (req.session.username != null) {
-      return res.render('index', {
-        username: req.session.username
-      });
+      return res.redirect('/student');
     } else {
       return res.render("login", {
         status: ''

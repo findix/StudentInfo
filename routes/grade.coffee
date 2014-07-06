@@ -2,86 +2,91 @@ express = require "express"
 router = express.Router()
 
 gradeModel = require "../model/Grade"
+courseModel = require "../model/course"
 
-router.get "/:gid", (req, res) ->
+router.get "/", (req, res)->
     unless req.session.username?
         res.redirect '/'
-    gid = req.params.gid
-    query = req.query.query
-    console.log(query)
-    gradeModel.find({},null, {sort:
-            'score': 1
+    res.redirect '/student'
+
+router.get "/:sid", (req, res) ->
+    unless req.session.username?
+        res.redirect '/'
+    sid = req.params.sid
+    gradeModel.find({student: sid}, null, {sort:
+            'course.cno': 1
         },
     (err, data)->
         if err?
             console.log(err)
-        console.log(data)
-        res.render 'grade',
-            grades: data
-            username: req.session.username
-            query: query
-            status: ''
-    )
+        courseModel.find().exec((err, courses)->
+            res.render 'grade',
+                grades: data
+                username: req.session.username
+                status: ''
+                sid: sid
+                courses: courses
+        )
+    ).populate("course student")
 
-#   增加一个学生
+#   增加成绩
 router.post "/add", (req, res) ->
     unless req.session.username?
         res.redirect '/'
-    _sno = req.body.sno
-    _sname = req.body.sname
-    _gender = req.body.gender
-    _class = req.body.class
-    _department = req.body.department
-    _birthday = req.body.birthday
-    studentEntity = new gradeModel
-        sno: _sno
-        sname: _sname
-        gender: _gender
-        class: _class
-        department: _department
-        birthday: _birthday
-    studentEntity.save((err)->
-        if err?
-            console.log(err)
+    _cno = req.body.cno
+    _cname = req.body.cname
+    _score = req.body.score
+    _sid = req.body.sid
+    courseModel.findOne(cno: _cno,(err, data) ->
+            if err?
+                console.log(err)
+            gradeEntity = new gradeModel
+                student: _sid
+                course: data._id
+                score: _score
+            gradeEntity.save((err)->
+                if err?
+                    console.log(err)
+            )
+            res.redirect "/grade/#{_sid}"
     )
-    res.redirect '/'
 
-#   删除一个学生
-router.get "/delete/:sid", (req, res) ->
+#   删除成绩
+router.get "/delete/:gid/:sid", (req, res) ->
     unless req.session.username?
         res.redirect '/'
+    gid = req.params.gid
     sid = req.params.sid
-    console.log(sid)
+    console.log(gid)
     gradeModel.remove(
-        {_id: sid},
+        {_id: gid},
     (err)->
         if err?
             console.log(err)
     )
-    res.redirect '/student'
+    res.redirect "/grade/#{sid}"
 
-#   修改一个学生
-router.post "/update/:sid", (req, res) ->
+#   修改成绩
+router.post "/update/:gid", (req, res) ->
     unless req.session.username?
         res.redirect '/'
-    sid = req.params.sid
-    _sno = req.body.sno
-    _sname = req.body.sname
-    _gender = req.body.gender
-    _class = req.body.class
-    _department = req.body.department
-    _birthday = req.body.birthday
-    gradeModel.findByIdAndUpdate(sid,
-        sno: _sno
-        sname: _sname
-        gender: _gender
-        class: _class
-        department: _department
-        birthday: _birthday,
-        (err)->
+    gid = req.params.gid
+    _cno = req.body.cno
+    _cname = req.body.cname
+    _score = req.body.score
+    _sid = req.body.sid
+    courseModel.findOne(cno: _cno,(err, data) ->
             if err?
                 console.log(err)
+            gradeModel.findByIdAndUpdate(gid,
+                student: _sid
+                course: data._id
+                score: _score,
+                (err)->
+                    if err?
+                        console.log(err)
+            )
     )
-    res.redirect '/student'
+    res.redirect "/grade/#{_sid}"
 
 module.exports = router

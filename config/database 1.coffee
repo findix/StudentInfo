@@ -17,3 +17,7 @@ mongoose.connection.on('disconnected', ()->
     console.log('Mongoose default connection disconnected')
 )
 
+studentModel = require "../model/Student"
+gradeModel = require "../model/Grade"
+courseModel = require "../model/Course"
+userModel=require "../model/User"

@@ -3,11 +3,12 @@ mongoose = require 'mongoose'
 
 courseModel = require "../model/Course"
 
-courseEntity=new courseModel(
-    cno:200001
-    cname:'Think in Swift'
-    credit:6
-    teacher: 'Steve Jobs'
-)
-courseEntity.save()
+for i in [200002..200010]
+    courseEntity = new courseModel(
+        cno: i + ''
+        cname: "Thinkins in #{i}"
+        credit: 6
+        teacher: 'Steve Jobs'
+    )
+    courseEntity.save()
 
