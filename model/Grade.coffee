@@ -5,7 +5,7 @@ _Grade = new mongoose.Schema
         type: mongoose.Schema.Types.ObjectId
         ref: 'Student'
         required:true
-    Course:
+    course:
         type: mongoose.Schema.Types.ObjectId
         ref: 'Course'
         required:true

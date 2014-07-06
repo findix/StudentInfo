@@ -18,7 +18,7 @@
 
         <div class="container">
             <!--搜索-->
-            <form action="/student" method="get" class="navbar-form navbar-left" role="search">
+            <form action="/grade" method="get" class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                     <input type="search" class="form-control" name="query" placeholder="Search"
                            value="<%= (query == undefined ? '' : query) %>">
@@ -29,37 +29,30 @@
             <div class="table-responsive">
                 <table class="table table-hover">
                     <tr>
-                        <th>学号</th>
-                        <th>姓名</th>
-                        <th>性别</th>
-                        <th>班级</th>
-                        <th>院系</th>
-                        <th>生日</th>
+                        <th>课号</th>
+                        <th>课程名</th>
+                        <th>学分</th>
+                        <th>教师</th>
+                        <th>成绩</th>
                         <th>
                             <button class="btn btn-primary" data-toggle="modal" data-target="#addModal" onclick="add()">
-                                添加学生
+                                添加成绩
                             </button>
                         </th>
                     </tr>
-                    <% if(students != undefined){
-                            students.forEach(function(student){ %>
-                    <tr id="<%= student._id %>">
-                        <td><%= student.sno %></td>
-                        <td><%= student.sname %></td>
-                        <td><%= student.gender %></td>
-                        <td><%= student.class %></td>
-                        <td><%= student.department %></td>
-
-                        <td><%= student.birthday.getFullYear() + '-' +
-                            (student.birthday.getMonth()+1 < 10 ? '0' + (student.birthday.getMonth()+1) : (student.birthday.getMonth()+1)) + '-' +
-                            (student.birthday.getDate() < 10 ? '0' + student.birthday.getDate() : student.birthday.getDate())
-                            %></td>
+                    <% if(grades != undefined){
+                            grades.forEach(function(grade){ %>
+                    <tr id="<%= grade._id %>">
+                        <td><%= grade.course.cno %></td>
+                        <td><%= grade.course.cname %></td>
+                        <td><%= grade.course.credit %></td>
+                        <td><%= grade.course.teacher %></td>
+                        <td><%= grade.score %></td>
                         <td>
                             <button class="btn btn-warning" data-toggle="modal" data-target="#addModal"
-                                    onclick="update('<%= student._id %>')">修改
+                                    onclick="update('<%= grade._id %>')">修改
                             </button>
-                            <a href="/student/delete/<%= student._id %>" class="btn btn-danger">删除</a>
-                            <a href="/grade/<%= student._id %>" class="btn btn-primary">查看成绩</a></td>
+                            <a href="/grade/delete/<%= grade._id %>" class="btn btn-danger">删除</a>
                     </tr>
                     <% });} %>
                 </table>
@@ -74,7 +67,7 @@
                                         aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
                             <h4 class="modal-title" id="modal-title">添加学生信息</h4>
                         </div>
-                        <form class="form-horizontal" id="form" method="post" action="/student">
+                        <form class="form-horizontal" id="form" method="post" action="/grade">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="sno" class="col-sm-2 control-label">学号</label>
@@ -151,7 +144,7 @@
 <script src="/javascripts/jquery-1.11.1.min.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
 <script src="/javascripts/coffee-script.js"></script>
-<script src="/javascripts/student.js"></script>
+<script src="/javascripts/grade.js"></script>
 </body>
 
 </html>
