@@ -2,8 +2,8 @@ express = require "express"
 mongoose = require 'mongoose'
 router = express.Router()
 
-gradeModel = mongoose.model('Grade')
-courseModel = mongoose.model('Course')
+gradeModel = mongoose.model "Grade"
+courseModel = mongoose.model "Course"
 
 router.get "/", (req, res)->
     unless req.session.username?
@@ -89,5 +89,15 @@ router.post "/update/:gid", (req, res) ->
             )
     )
     res.redirect "/grade/#{_sid}"
+
+router.get "/average/:cid", (req, res)->
+    unless req.session.username?
+        res.redirect '/'
+    cid = req.params.cid
+    gradeModel.find(course: cid,(err, data) ->
+            sum = 0
+            sum += datum.score for datum in data
+            res.send (sum / data.length)+''
+    )
 
 module.exports = router

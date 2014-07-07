@@ -8,9 +8,9 @@
 
   router = express.Router();
 
-  gradeModel = mongoose.model('Grade');
+  gradeModel = mongoose.model("Grade");
 
-  courseModel = mongoose.model('Course');
+  courseModel = mongoose.model("Course");
 
   router.get("/", function(req, res) {
     if (req.session.username == null) {
@@ -122,6 +122,25 @@
       });
     });
     return res.redirect("/grade/" + _sid);
+  });
+
+  router.get("/average/:cid", function(req, res) {
+    var cid;
+    if (req.session.username == null) {
+      res.redirect('/');
+    }
+    cid = req.params.cid;
+    return gradeModel.find({
+      course: cid
+    }, function(err, data) {
+      var datum, sum, _i, _len;
+      sum = 0;
+      for (_i = 0, _len = data.length; _i < _len; _i++) {
+        datum = data[_i];
+        sum += datum.score;
+      }
+      return res.send((sum / data.length) + '');
+    });
   });
 
   module.exports = router;

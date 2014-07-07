@@ -27,3 +27,4 @@ node_modules
 #JetBrains Webstorm setting files
 .idea/workspace.xml
 .idea/tasks.xml
+.idea/runConfigurations/

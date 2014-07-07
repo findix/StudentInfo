@@ -3,6 +3,7 @@ mongoose = require 'mongoose'
 router = express.Router()
 
 courseModel = mongoose.model('Course')
+gradeModel = mongoose.model('Grade')
 
 # GET home page.
 router.get "/", (req, res) ->

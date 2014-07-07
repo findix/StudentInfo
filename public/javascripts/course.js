@@ -18,3 +18,18 @@ var add = function () {
     $('#credit').val('');
     $('#teacher').val('');
 };
+$(function () {
+    var arr = $('tr .average');
+    for (var i = 0; i < arr.length; i++) {
+        (function(j){
+            $.ajax({
+                    url: '/grade/average/' + $(arr[j]).attr('data-id'),
+                    success: function (data) {
+                        $(arr[j]).html(data);
+                    }
+                }
+            );
+        })(i);
+
+    }
+});

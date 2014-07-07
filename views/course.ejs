@@ -17,7 +17,7 @@
         <% include public/nav %>
         <div class="container">
             <!--搜索-->
-            <form action="/course" method="get" class="navbar-form navbar-left" role="search"
+            <form action="/course" method="get" class="navbar-form" role="search"
                   style="margin:20px 0px 20px -15px">
                 <div class="form-group">
                     <input type="search" class="form-control" name="query" placeholder="Search"
@@ -48,7 +48,7 @@
                         <td><%= course.cname %></td>
                         <td><%= course.credit %></td>
                         <td><%= course.teacher %></td>
-                        <td></td>
+                        <td class="average" data-id="<%= course._id %>"></td>
                         <td>
                             <button class="btn btn-warning" data-toggle="modal" data-target="#addModal"
                                     onclick="update('<%= course._id %>')">修改
