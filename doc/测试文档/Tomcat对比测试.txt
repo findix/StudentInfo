@@ -1,0 +1,43 @@
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        Apache-Coyote/1.1
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /gpms/
+Document Length:        5176 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   89.889 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      54190000 bytes
+HTML transferred:       51760000 bytes
+Requests per second:    111.25 [#/sec] (mean)
+Time per request:       8988.852 [ms] (mean)
+Time per request:       8.989 [ms] (mean, across all concurrent requests)
+Transfer rate:          588.73 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   1.9      0      69
+Processing:  1084 8551 1491.1   8755   12994
+Waiting:      978 8547 1493.1   8752   12978
+Total:       1084 8552 1490.9   8755   12994
+
+Percentage of the requests served within a certain time (ms)
+  50%   8755
+  66%   9119
+  75%   9338
+  80%   9483
+  90%   9918
+  95%  10275
+  98%  10667
+  99%  10961
+ 100%  12994 (longest request)
